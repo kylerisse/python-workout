@@ -1,0 +1,32 @@
+---
+version: 2
+
+jobs:
+  test:
+    docker: 
+    - image: docker:latest 
+    resource_class: small
+    working_directory: ~/build
+    steps:
+    - checkout:
+        path: ~/build
+    - run:
+        name: install make
+        command: apk --update add make
+    - setup_remote_docker:
+        docker_layer_caching: false
+    - run:
+        name: build
+        command: make build
+    - run:
+        name: lint
+        command: make lint
+    - run:
+        name: test
+        command: make test
+
+workflows:
+  version: 2
+  test_all:
+    jobs:
+      - test

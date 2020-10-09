@@ -11,7 +11,7 @@ def guessing_game(randseed=datetime.datetime.now()):
     '''
     random.seed(randseed)
     number = random.randint(10, 30)
-    while sguess := input(f'guess a number between 10 and 30: '):
+    while sguess := input('guess a number between 10 and 30: '):
         try:
             guess = int(sguess)
         except ValueError:
@@ -31,7 +31,13 @@ def mysum(*numbers):
     mysum() returns the sum of any number of input numbers
     '''
     total = 0
-    for num in numbers:
+    for numi in numbers:
+        if isinstance(numi, bool):
+            continue
+        try:
+            num = float(numi)
+        except ValueError:
+            continue
         total += num
     return total
 
@@ -43,7 +49,7 @@ def run_timing():
     '''
     count = 0
     total = 0.0
-    while time := input(f'Enter 10 km run time: '):
+    while time := input('Enter 10 km run time: '):
         total += float(time)
         count += 1
     return total/count
