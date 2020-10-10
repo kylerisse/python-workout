@@ -23,7 +23,11 @@ jobs:
         command: make lint
     - run:
         name: test
-        command: make test
+        command: |
+            make test &&
+            sh bin/copy_report
+    - store_test_results:
+          path: ~/.report.json
 
 workflows:
   version: 2
