@@ -7,6 +7,7 @@ Chapter 1 Tests
 import unittest.mock
 import ch1
 
+
 def test_guessing_game():
     '''
     tests ch1.guessing_game()
@@ -28,6 +29,15 @@ def test_guessing_game():
                 '14 is 14, correct',
             ],
         },
+        # should exits silently if given no input
+        {
+            'seed': 2,
+            'user_input': [''],
+            'expected': [
+                'guess a number between 10 and 30: ',
+            ]
+        },
+        # should return invalid integer warning 
         {
             'seed': 2,
             'user_input': [15, 'x', 7, 11],
@@ -57,6 +67,7 @@ def test_guessing_game():
 
         ch1.guessing_game(case['seed'])
         assert output == case['expected']
+
 
 def test_mysum():
     '''

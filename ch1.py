@@ -18,12 +18,12 @@ def guessing_game(randseed=datetime.datetime.now()):
             print(f'{sguess} is not a valid integer')
             continue
         if guess == number:
+            print(f'{guess} is {number}, correct')
             break
         if guess > number:
             print(f'{guess} is too high')
         if guess < number:
             print(f'{guess} is too low')
-    print(f'{guess} is {number}, correct')
 
 
 def mysum(*numbers):
