@@ -26,8 +26,8 @@ jobs:
         command: |
             make test &&
             sh bin/copy_report.sh
-    - store_test_results:
-          path: ~/build/report.xml
+    - store_artifacts:
+          path: ~/build/htmlcov/
 
 workflows:
   version: 2

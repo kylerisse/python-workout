@@ -5,7 +5,7 @@ build: clean
 .PHONY: test
 test: clean
 	# make: test (requires make build)
-	docker run -ti python-workout pytest -vv
+	docker run -ti python-workout sh -c 'coverage run -m pytest -vv && coverage report'
 
 .PHONY: lint
 lint: clean
@@ -15,6 +15,7 @@ lint: clean
 .PHONY: clean
 clean:
 	# make: clean
+	rm -rf htmlcov/
 	rm -rf __pycache__
 	rm -rf .pytest_cache
 
