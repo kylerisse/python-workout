@@ -25,7 +25,7 @@ jobs:
         name: test
         command: |
             make test &&
-            sh bin/copy_report
+            sh bin/copy_report.sh
     - store_test_results:
           path: ~/.report.json
 
