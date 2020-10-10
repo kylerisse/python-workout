@@ -10,7 +10,7 @@ test: clean
 .PHONY: lint
 lint: clean
 	# make: lint (requires make build)
-	docker run -ti python-workout pylint *.py
+	docker run -ti python-workout sh -c 'pylint *.py'
 
 .PHONY: clean
 clean:
