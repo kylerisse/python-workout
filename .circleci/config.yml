@@ -27,7 +27,7 @@ jobs:
             make test &&
             sh bin/copy_report.sh
     - store_test_results:
-          path: ~/build/.report.json
+          path: ~/build/report.xml
 
 workflows:
   version: 2

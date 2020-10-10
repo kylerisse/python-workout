@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-CONTAINER=$(docker run -d python-workout pytest --json-report -vv)
+CONTAINER=$(docker run -d python-workout pytest --junitxml=report.xml -vv)
 sleep 5
-docker cp ${CONTAINER}:/app/.report.json ./
+docker cp ${CONTAINER}:/app/report.xml ./
