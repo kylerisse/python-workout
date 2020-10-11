@@ -51,3 +51,18 @@ def test_ubbi_dubbi():
     for k, v in test_cases.items():
         got = ch2.ubbi_dubbi(k)
         assert got == v, f'{got} != {v}'
+
+
+def test_strsort():
+    '''
+    test ch2.strsort()
+    '''
+    test_cases = {
+        'aieuo': 'aeiou',
+        'cbad': 'abcd',
+        'shorts': 'horsst',
+    }
+
+    for k, v in test_cases.items():
+        got = ch2.strsort(k)
+        assert got == v, f'{got} != {v}'

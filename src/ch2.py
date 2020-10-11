@@ -34,3 +34,10 @@ def ubbi_dubbi(word):
             out.append('ub')
         out.append(letter)
     return ''.join(out)
+
+
+def strsort(word):
+    '''
+    strsort() sorts the characters in a string
+    '''
+    return ''.join(sorted(word))
