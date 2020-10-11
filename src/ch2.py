@@ -22,3 +22,15 @@ def pl_sentence(words):
     for word in words.split(' '):
         out.append(pig_latin(word))
     return ' '.join(out)
+
+
+def ubbi_dubbi(word):
+    '''
+    ubbi_dubbi() translates a word into ubbi dubbi
+    '''
+    out = []
+    for letter in word:
+        if letter in vowels:
+            out.append('ub')
+        out.append(letter)
+    return ''.join(out)

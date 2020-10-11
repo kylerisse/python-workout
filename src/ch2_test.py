@@ -35,3 +35,19 @@ def test_pl_sentence():
     for k, v in test_cases.items():
         got = ch2.pl_sentence(k)
         assert got == v, f'{got} != {v}'
+
+
+def test_ubbi_dubbi():
+    '''
+    test ch2.ubbi_dubbi()
+    '''
+    test_cases = {
+        'milk': 'mubilk',
+        'program': 'prubogrubam',
+        'octopus': 'uboctubopubus',
+        'elephant': 'ubelubephubant',
+    }
+
+    for k, v in test_cases.items():
+        got = ch2.ubbi_dubbi(k)
+        assert got == v, f'{got} != {v}'
