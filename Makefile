@@ -17,7 +17,9 @@ clean:
 	# make: clean
 	rm -rf htmlcov/
 	rm -rf __pycache__
+	rm -rf src/__pycache__
 	rm -rf .pytest_cache
+	rm -rf src/.pytest_cache
 
 .PHONY: mrproper
 mrproper: clean
