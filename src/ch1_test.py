@@ -4,7 +4,6 @@
 Chapter 1 Tests
 '''
 
-import unittest.mock
 import ch1
 
 
