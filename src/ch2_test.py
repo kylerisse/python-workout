@@ -21,3 +21,17 @@ def test_pig_latin():
     for k, v in test_cases.items():
         got = ch2.pig_latin(k)
         assert got == v, f'{got} != {v}'
+
+
+def test_pl_sentence():
+    '''
+    test ch2.pl_sentence()
+    '''
+    test_cases = {
+        'this is a test translation': 'histay isway away esttay ranslationtay',
+        'hi there friend nice to see you': 'ihay heretay riendfay icenay otay eesay ouyay',
+    }
+
+    for k, v in test_cases.items():
+        got = ch2.pl_sentence(k)
+        assert got == v, f'{got} != {v}'
