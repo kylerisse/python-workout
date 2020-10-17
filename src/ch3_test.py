@@ -65,12 +65,12 @@ def test_mysum():
     },
     {
         'input': '',
-        'output': ''
+        'output': '',
     },
     {
         'input': 1,
-        'output': 1,
-    }
+        'output': 2,
+    },
 
     for case in test_cases:
         got = ch3.mysum(*case['input'])
@@ -111,3 +111,20 @@ def test_alphabatize_names():
     for case in test_cases:
         got = ch3.alphabatize_names(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
+
+
+def test_most_repeating_word():
+    test_cases = [
+        {
+            'input': ['this', 'is', 'an', 'elementary', 'test', 'example'],
+            'output': 'elementary'
+        },
+        {
+            'input': [],
+            'output': '',
+        }
+    ]
+
+    for case in test_cases:
+        got = ch3.most_repeating_word(case['input'])
+        assert got == case['output'], f'{got} != {case["output"]}'

@@ -4,6 +4,7 @@ Chapter 3
 
 import operator
 from collections.abc import Iterable
+from collections import Counter
 
 
 def firstlast(seq):
@@ -25,10 +26,8 @@ def firstlast(seq):
 
 def mysum(*sequence):
     '''
-    mysum() returns a sequence concatendated
+    mysum() returns a sequence concatendated or sum of a list of numbers
     '''
-    if len(sequence) == 0:
-        return sequence
     total = sequence[0]
     for seq in sequence[1:]:
         total += seq
@@ -44,3 +43,20 @@ def alphabatize_names(people):
         persons.append([person['last'], person['first']])
 
     return sorted(persons, key=operator.itemgetter(0, 1))
+
+
+def most_repeating_word(words):
+    '''
+    most_repeating_word returns the word with the most repeating
+    single characters
+    '''
+    if len(words) < 1:
+        return ''
+    highest = 0
+    answer = ''
+    for word in words:
+        high = Counter(word).most_common()[0][1]
+        if high > highest:
+            highest = high
+            answer = word
+    return answer
