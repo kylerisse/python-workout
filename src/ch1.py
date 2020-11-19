@@ -57,6 +57,7 @@ def run_timing():
 
 def hex_output(hex_num):
     '''
+    (this doesn't work properly)
     hex_output() takes a hexidecimal number and returns
     it's decimal equivalent
     '''

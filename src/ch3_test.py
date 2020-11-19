@@ -128,3 +128,10 @@ def test_most_repeating_word():
     for case in test_cases:
         got = ch3.most_repeating_word(case['input'])
         assert got == case['output'], f'{got} != {case["output"]}'
+
+
+def test_format_sort_records():
+    '''
+    (this needs a test)
+    '''
+    pass

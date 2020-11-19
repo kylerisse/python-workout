@@ -105,3 +105,7 @@ def test_mysum():
     for case in test_cases:
         got = ch1.mysum(*case['input'])
         assert got == case['output'], f'{got} != {case["output"]}'
+
+
+def test_hex_output():
+    pass

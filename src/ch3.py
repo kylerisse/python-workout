@@ -2,7 +2,7 @@
 Chapter 3
 '''
 
-import operator
+from operator import itemgetter
 from collections.abc import Iterable
 from collections import Counter
 
@@ -42,12 +42,12 @@ def alphabatize_names(people):
     for person in people:
         persons.append([person['last'], person['first']])
 
-    return sorted(persons, key=operator.itemgetter(0, 1))
+    return sorted(persons, key=itemgetter(0, 1))
 
 
 def most_repeating_word(words):
     '''
-    most_repeating_word returns the word with the most repeating
+    most_repeating_word() returns the word with the most repeating
     single characters
     '''
     if len(words) < 1:
@@ -60,3 +60,14 @@ def most_repeating_word(words):
             highest = high
             answer = word
     return answer
+
+
+def format_sort_records(names):
+    '''
+    format_sort_records() sorts and formats a list of tupled
+    first name, last name, distance values
+    '''
+    formatted = ''
+    for name in sorted(names, key=itemgetter(1, 0, 2)):
+        formatted += ('{1:10}{0:10}{2:2.2f}'.format(*name))
+    return formatted
