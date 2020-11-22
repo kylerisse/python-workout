@@ -14,7 +14,7 @@ def test_restaurant():
     pass
 
 
-def get_rainfall():
+def test_get_rainfall():
     '''
     (this needs a test)
     '''

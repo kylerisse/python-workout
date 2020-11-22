@@ -4,6 +4,9 @@
 Chapter 5 Tests
 '''
 
+import hashlib
+import os
+
 import ch5
 
 
@@ -104,3 +107,36 @@ def test_find_all_longest_words():
     for case in testcases:
         got = ch5.find_all_longest_words(case['path'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
+
+
+def test_passwd_to_tsv():
+    '''
+    test ch5.passwd_to_tsv
+    '''
+    testcases = [
+        {
+            'in': 'testdata/small_passwd',
+            'out': '/tmp/small_passwd.tsv',
+            'checksum': '2973af190793a89c5f80b373ba82c4155b1c90fed74e1bf6d4b083c7f6447410',
+        },
+        {
+            'in': 'testdata/passwd',
+            'out': '/tmp/passwd.tsv',
+            'checksum': '48c26a6adc2e6e8306c79bba47b258565f7b6594507608f8fe6db24ceef75db4',
+        },
+    ]
+    for case in testcases:
+        ch5.passwd_to_tsv(case['in'], case['out'])
+        with open(case['out'], 'rb') as ofile:
+            byts = ofile.read()
+            osum = hashlib.sha256(byts).hexdigest()
+            os.remove(case['out'])
+        assert case['checksum'] == osum, f'{case["out"]} has unexpected checksum {osum}'
+
+
+def test_summarize_scores():
+    '''
+    (this needs a test)
+    test ch5.summarize_scores
+    '''
+    pass

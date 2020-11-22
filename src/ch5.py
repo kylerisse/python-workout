@@ -2,9 +2,11 @@
 Chapter 5
 '''
 
-import re
+from csv import writer
+from json import loads
 from os import listdir
 from os.path import isfile, join
+from re import match
 
 
 def get_final_line(file_name):
@@ -60,7 +62,7 @@ def find_longest_word(file_name):
     with open(file_name, 'r')as fil:
         for line in fil:
             words = line.split()
-            clean_words = [clean for clean in words if re.match(r'[^\W\d]*$', clean)]
+            clean_words = [clean for clean in words if match(r'[^\W\d]*$', clean)]
             for word in clean_words:
                 if len(word) > len(longest):
                     longest = word
@@ -74,5 +76,42 @@ def find_all_longest_words(path):
     files = {}
     dir_files = [fil for fil in listdir(path) if isfile(join(path, fil))]
     for fil in dir_files:
-        files[fil] = find_longest_word(f'{path}/{fil}')
+        files[fil] = find_longest_word(join(path, fil))
     return files
+
+
+def passwd_to_tsv(in_file, out_file):
+    '''
+    convert passwd to simple tsv with user and uid
+    '''
+    delim = '\t'
+    passdict = passwd_to_dict(in_file)
+    with open(out_file, 'w') as ofile:
+        owriter = writer(ofile, delimiter=delim)
+        for key, val in passdict.items():
+            owriter.writerow([key, val])
+
+
+def summarize_scores(path):
+    '''
+    (not completely happy with this function)
+    summarize grade scores from directory of json files
+    '''
+    files = {}
+    dir_files = [fil for fil in listdir(path) if isfile(join(path, fil))]
+    for file_name in dir_files:
+        files[join(file_name)] = {}
+        with open(join(path, file_name), 'r') as fil:
+            content = fil.read()
+            jblob = loads(content)
+        for grades in jblob:
+            for subject, score in grades.items():
+                files[file_name][subject] = files[file_name].get(subject, [])
+                files[file_name][subject].append(score)
+        print(f'{file_name}')
+        for subject, grades in files[file_name].items():
+            minn = min(grades)
+            maxx = max(grades)
+            avg = sum(grades)/len(grades)
+            favg = '{:3.2f}'.format(avg)
+            print(f'\t{subject}: min {minn}, max {maxx}, avg {favg}')
