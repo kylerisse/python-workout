@@ -52,12 +52,14 @@ def run_timing():
     while time := input('Enter 10 km run time: '):
         total += float(time)
         count += 1
-    return total/count
+    if total == 0:
+        print(0)
+    else:
+        print(str(total/count))
 
 
 def hex_output(hex_num):
     '''
-    (this doesn't work properly)
     hex_output() takes a hexidecimal number and returns
     it's decimal equivalent
     '''

@@ -107,5 +107,54 @@ def test_mysum():
         assert got == case['output'], f'{got} != {case["output"]}'
 
 
+def test_run_timing():
+    '''
+    test ch1.run_timing()
+    '''
+    test_cases = [
+        {
+            'user_input': [5, 2.2, 11, 6, ''],
+            'expected': [
+                'Enter 10 km run time: ',
+                'Enter 10 km run time: ',
+                'Enter 10 km run time: ',
+                'Enter 10 km run time: ',
+                'Enter 10 km run time: ',
+                '6.05',
+            ],
+        },
+        {
+            'user_input': [''],
+            'expected': [
+                'Enter 10 km run time: ',
+                0,
+            ],
+        },
+    ]
+    for case in test_cases:
+        output = []
+
+        def mock_input(s):
+            output.append(s)
+            return case['user_input'].pop(0)
+
+        ch1.input = mock_input
+        ch1.print = lambda s: output.append(s)
+        
+        got = ch1.run_timing()
+        assert output == case['expected']
+
+
 def test_hex_output():
-    pass
+    '''
+    test ch1.hex_output()
+    '''
+    test_cases = [
+        {
+            'input': '50',
+            'expected': 80,
+        }
+    ]
+    for case in test_cases:
+        got = ch1.hex_output(case['input'])
+        assert got == case['expected'], f'{got} != {case["output"]}'
