@@ -50,3 +50,30 @@ def test_dictdiff():
     for case in testcases:
         got = ch4.dictdiff(case['d1'], case['d2'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
+
+
+def test_how_many_different_numbers():
+    '''
+    test ch4.how_many_different_numbers()
+    '''
+    testcases = [
+        {
+            'input': [1, 3, 4, 2, 3, 1, 4, 2, 3, 4, 2, 1, 2],
+            'expected': 4,
+        },
+        {
+            'input': [],
+            'expected': 0,
+        },
+        {
+            'input': [22, 17, 44, 63, 82, 11, 22, 97, 41],
+            'expected': 8,
+        },
+        {
+            'input': range(-1000, 1000),
+            'expected': 2000,
+        },
+    ]
+    for case in testcases:
+        got = ch4.how_many_different_numbers(case['input'])
+        assert got == case['expected'], f'{got} != {case["expected"]}'
