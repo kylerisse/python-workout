@@ -19,8 +19,6 @@ def restaurant():
         print(f'{food} ${cost}')
     total = 0
     while item := input('what would you like? '):
-        if item == '':
-            break
         if item in menu:
             total += menu[item]
         else:
@@ -34,8 +32,6 @@ def get_rainfall():
     '''
     rainfall = {}
     while city := input('city: '):
-        if city == '':
-            break
         while entered := input('rainfall: '):
             try:
                 amount = int(entered)

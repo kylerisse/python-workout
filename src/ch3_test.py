@@ -39,6 +39,10 @@ def test_firstlast():
         {
             'input': 6,
             'output': 6,
+        },
+        {
+            'input': {'a': 1, 'b': 2},
+            'output': {'a': 1, 'b': 2},
         }
     ]
 
@@ -132,6 +136,31 @@ def test_most_repeating_word():
 
 def test_format_sort_records():
     '''
-    (this needs a test)
+    test ch3.format_sort_records()
     '''
-    pass
+    testcases = [
+        {
+            'input': [
+                ('Joe', 'Shmoe', 7.85),
+                ('Bo', 'Shmoe', 3.626),
+                ('George', 'Martini', 10),
+                ('Dexter', 'Boomhauer', 2.1),
+                ('Albert', 'X', 17),
+            ],
+            'expected': [
+                'Boomhauer Dexter    2.10',
+                'Martini   George    10.00',
+                'Shmoe     Bo        3.63',
+                'Shmoe     Joe       7.85',
+                'X         Albert    17.00',
+            ],
+        },
+    ]
+
+    for case in testcases:
+        output = []
+
+        ch3.print = lambda s: output.append(s)
+
+        ch3.format_sort_records(case['input'])
+        assert output == case['expected'], f'{output} != {case["expected"]}'

@@ -136,7 +136,27 @@ def test_passwd_to_tsv():
 
 def test_summarize_scores():
     '''
-    (this needs a test)
     test ch5.summarize_scores
     '''
-    pass
+    testcases = [
+        {
+            'input': 'testdata/scores',
+            'expected': [
+                '9b.json',
+                '\tmath: min 21, max 93, avg 63.00',
+                '\tliterature: min 68, max 100, avg 84.50',
+                '\tscience: min 72, max 99, avg 87.67',
+                '9a.json',
+                '\tmath: min 65, max 100, avg 85.00',
+                '\tliterature: min 78, max 98, avg 83.60',
+                '\tscience: min 75, max 97, avg 86.40',
+            ],
+        },
+    ]
+    for case in testcases:
+        output = []
+
+        ch5.print = lambda s: output.append(s)
+
+        ch5.summarize_scores(case['input'])
+        assert output == case['expected'], f'{output} != {case["expected"]}'

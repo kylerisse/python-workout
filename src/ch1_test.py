@@ -60,12 +60,11 @@ def test_guessing_game():
             output.append(s)
             return case['user_input'].pop(0)
 
-
         ch1.input = mock_input
         ch1.print = lambda s: output.append(s)
 
         ch1.guessing_game(case['seed'])
-        assert output == case['expected']
+        assert output == case['expected'], f'{output} != {case["expected"]}'
 
 
 def test_mysum():
@@ -141,8 +140,8 @@ def test_run_timing():
         ch1.input = mock_input
         ch1.print = lambda s: output.append(s)
         
-        got = ch1.run_timing()
-        assert output == case['expected']
+        ch1.run_timing()
+        assert output == case['expected'], f'{output} != {case["expected"]}'
 
 
 def test_hex_output():

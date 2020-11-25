@@ -67,7 +67,5 @@ def format_sort_records(names):
     format_sort_records() sorts and formats a list of tupled
     first name, last name, distance values
     '''
-    formatted = ''
     for name in sorted(names, key=itemgetter(1, 0, 2)):
-        formatted += ('{1:10}{0:10}{2:2.2f}'.format(*name))
-    return formatted
+        print('{1:10}{0:10}{2:2.2f}'.format(*name))

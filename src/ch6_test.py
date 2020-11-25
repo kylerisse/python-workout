@@ -104,6 +104,19 @@ def test_create_password_generator():
                 },
             ],
         },
+        {
+            'generator': ch6.create_password_generator('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()', rngseed=7),
+            'tests': [
+                {
+                    'length': 8,
+                    'expected': 'ujz^de8g',
+                },
+                {
+                    'length': 16,
+                    'expected': 'ujz^de8gx@d6ncf1',
+                },
+            ],
+        },
     ]
     for case in testcases:
         gen = case['generator']

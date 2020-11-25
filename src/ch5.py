@@ -94,7 +94,6 @@ def passwd_to_tsv(in_file, out_file):
 
 def summarize_scores(path):
     '''
-    (not completely happy with this function)
     summarize grade scores from directory of json files
     '''
     files = {}

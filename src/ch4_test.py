@@ -9,16 +9,132 @@ import ch4
 
 def test_restaurant():
     '''
-    (this needs a test)
+    test ch4.restaurant()
     '''
-    pass
+    testcases = [
+        {
+            'user_input': [
+                '',
+            ],
+            'expected': [
+                'Welcome to Restaurant:',
+                'taco $2',
+                'burrito $5',
+                'quesadilla $4',
+                'soda $1',
+                'salsa $1',
+                'what would you like? ',
+                "That'll be $0",                
+            ],
+        },
+        {
+            'user_input': [
+                'taco',
+                '',
+            ],
+            'expected': [
+                'Welcome to Restaurant:',
+                'taco $2',
+                'burrito $5',
+                'quesadilla $4',
+                'soda $1',
+                'salsa $1',
+                'what would you like? ',
+                'what would you like? ',
+                "That'll be $2",                
+            ],
+        },
+        {
+            'user_input': [
+                'taco',
+                'burrito',
+                'quesadilla',
+                'tamale',
+                'salsa',
+                'soda',
+                'taco',
+                '',
+            ],
+            'expected': [
+                'Welcome to Restaurant:',
+                'taco $2',
+                'burrito $5',
+                'quesadilla $4',
+                'soda $1',
+                'salsa $1',
+                'what would you like? ',
+                'what would you like? ',
+                'what would you like? ',
+                'what would you like? ',
+                "we don't have that",
+                'what would you like? ',
+                'what would you like? ',
+                'what would you like? ',
+                'what would you like? ',
+                "That'll be $15",                
+            ],
+        },
+    ]
+
+    for case in testcases:
+        output = []
+
+        def mock_input(s):
+            output.append(s)
+            return case['user_input'].pop(0)
+        
+        ch4.input = mock_input
+        ch4.print = lambda s: output.append(s)
+
+        ch4.restaurant()
+        assert output == case['expected'], f'{output} != {case["expected"]}'
 
 
 def test_get_rainfall():
     '''
-    (this needs a test)
+    test ch4.rainfall()
     '''
-    pass
+    testcases = [
+        {
+            'user_input': [
+                'dallas',
+                '10',
+                'dallas',
+                '2',
+                'houston',
+                'x',
+                '5',
+                '',
+            ],
+            'expected': [
+                'city: ',
+                'rainfall: ',
+                'city: ',
+                'rainfall: ',
+                'city: ',
+                'rainfall: ',
+                'x is not a valid integer',
+                'rainfall: ',
+                'city: ',
+                'results:',
+                'dallas: 12',
+                'houston: 5',
+            ]
+        },
+    ]
+
+    for case in testcases:
+        output = []
+
+        def mock_input(s):
+            output.append(s)
+            return case['user_input'].pop(0)
+        
+        ch4.input = mock_input
+        ch4.print = lambda s: output.append(s)
+
+        ch4.get_rainfall()
+        assert output == case['expected'], f'{output} != {case["expected"]}'
 
 
 def test_dictdiff():
