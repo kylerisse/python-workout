@@ -12,7 +12,7 @@ def test_join_numbers():
     '''
     test ch7.join_numbers()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': 15,
             'expected': '0,1,2,3,4,5,6,7,8,9,10,11,12,13,14',
@@ -23,7 +23,7 @@ def test_join_numbers():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         got = ch7.join_numbers(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -32,7 +32,7 @@ def test_sum_numbers():
     '''
     test ch7.sum_numbers()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': '10 abc 20 de44 30 55fg 40',
             'expected': 100,
@@ -47,7 +47,7 @@ def test_sum_numbers():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         got = ch7.sum_numbers(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -56,7 +56,7 @@ def test_flatten_recursive():
     '''
     test ch7.flatten_recursive()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': [[1, 2], [3, 4]],
             'expected': [1, 2, 3, 4],
@@ -71,7 +71,7 @@ def test_flatten_recursive():
         },
     ]
     
-    for case in testcases:
+    for case in test_cases:
         got = ch7.flatten_recursive(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -80,13 +80,13 @@ def test_flatten_comprehension():
     '''
     test ch7.flatten_comprehension()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': [[1, 2], [3, 4]],
             'expected': [1, 2, 3, 4],
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch7.flatten_comprehension(case['input'])
         assert got == case['expected'], f'{got} !+ {case["expected"]}'
 
@@ -95,7 +95,7 @@ def test_pig_latin_file():
     '''
     test ch7.pig_latin_file()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': 'testdata/time_machine_chapter1.txt',
             'checksum': '581f9205bee054da0b1f9e9ddfce6720679a8932900c19637ef6a64f21bb9a69',
@@ -106,7 +106,7 @@ def test_pig_latin_file():
         }
     ]
 
-    for case in testcases:
+    for case in test_cases:
         gotstr = ch7.pig_latin_file(case['input'])
         gotbyt = bytes(gotstr, 'utf-8')
         got = hashlib.sha256(gotbyt).hexdigest()
@@ -117,14 +117,14 @@ def test_flip_dict():
     '''
     test ch7.flip_dict()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': {'a': 1, 'b': 2, 'c': 3, 'd': 4,},
             'expected': {1: 'a', 2: 'b', 3: 'c', 4: 'd',},
         }
     ]
 
-    for case in testcases:
+    for case in test_cases:
         got = ch7.flip_dict(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -133,7 +133,7 @@ def test_transform_values():
     '''
     test ch7.transform_values()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': {'a': 1, 'b': 2, 'c': 3, 'd': 4,},
             'func': lambda x: x*x,
@@ -156,7 +156,7 @@ def test_transform_values():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         got = ch7.transform_values(case['func'], case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -165,7 +165,7 @@ def test_get_sv():
     '''
     test ch7.get_sv()
     '''
-    testcases = [
+    test_cases = [
         {
             'file_name': 'testdata/dict/words.txt',
             'expected_count': 6004,
@@ -175,7 +175,7 @@ def test_get_sv():
             'expected_count': 2,
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch7.get_sv(case['file_name'])
         assert len(got) == case['expected_count'], f'{got} != {case["expected_count"]}'
 
@@ -201,7 +201,7 @@ def test_gematria_for():
     '''
     test ch7.gematria_for()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': 'a',
             'expected': 1,
@@ -228,7 +228,7 @@ def test_gematria_for():
         },
     ]
     
-    for case in testcases:
+    for case in test_cases:
         got = ch7.gematria_for(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -238,7 +238,7 @@ def test_gematria_equal_words():
     test ch7.gematria_equal_words
     '''
     dict_file = 'testdata/dict/words_small.txt'
-    testcases = [
+    test_cases = [
         {
             'input': 'test',
             'expected': ['Abderite', 'abecedary'],
@@ -261,6 +261,6 @@ def test_gematria_equal_words():
         }
     ]
 
-    for case in testcases:
+    for case in test_cases:
         got = ch7.gematria_equal_words(case['input'], dict_file=dict_file)
         assert got == case['expected'], f'{got} != {case["expected"]}'

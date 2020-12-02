@@ -11,7 +11,7 @@ def test_restaurant():
     '''
     test ch4.restaurant()
     '''
-    testcases = [
+    test_cases = [
         {
             'user_input': [
                 '',
@@ -76,7 +76,7 @@ def test_restaurant():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         output = []
 
         def mock_input(s):
@@ -94,7 +94,7 @@ def test_get_rainfall():
     '''
     test ch4.rainfall()
     '''
-    testcases = [
+    test_cases = [
         {
             'user_input': [
                 'dallas',
@@ -123,7 +123,7 @@ def test_get_rainfall():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         output = []
 
         def mock_input(s):
@@ -141,7 +141,7 @@ def test_dictdiff():
     '''
     test ch4.dictdiff()
     '''
-    testcases = [
+    test_cases = [
         {
             'd1': {'a': 1, 'b': 2, 'c': 3},
             'd2': {'a': 1, 'b': 2, 'c': 3},
@@ -163,7 +163,7 @@ def test_dictdiff():
             'expected': {'c': [3, None], 'd': [None, 4]},
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch4.dictdiff(case['d1'], case['d2'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -172,7 +172,7 @@ def test_how_many_different_numbers():
     '''
     test ch4.how_many_different_numbers()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': [1, 3, 4, 2, 3, 1, 4, 2, 3, 4, 2, 1, 2],
             'expected': 4,
@@ -190,6 +190,6 @@ def test_how_many_different_numbers():
             'expected': 2000,
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch4.how_many_different_numbers(case['input'])
         assert got == case['expected'], f'{got} != {case["expected"]}'

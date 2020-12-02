@@ -14,7 +14,7 @@ def test_get_final_line():
     '''
     test ch5.get_final_line()
     '''
-    testcases = [
+    test_cases = [
         {
             'file_name': 'testdata/passwd',
             'expected': 'sabayon:x:86:86:Sabayon user:/home/sabayon:/sbin/nologin',
@@ -28,7 +28,7 @@ def test_get_final_line():
             'expected': "he winked at me solemnly."
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch5.get_final_line(case['file_name'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -37,13 +37,13 @@ def test_passwd_to_dict():
     '''
     test ch5.passwd_to_dict()
     '''
-    testcases = [
+    test_cases = [
         {
             'file_name': 'testdata/small_passwd',
             'expected': {'nobody': '-2', 'root': '0', 'daemon': '1'},
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch5.passwd_to_dict(case['file_name'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -52,13 +52,13 @@ def test_wordcount():
     '''
     test ch5.wordcount()
     '''
-    testcases = [
+    test_cases = [
         {
             'file_name': 'testdata/wcfile.txt',
             'expected': 'words: 28 unique: 20 chars: 165 lines: 11',
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch5.wordcount(case['file_name'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -67,7 +67,7 @@ def test_find_longest_word():
     '''
     test ch5.find_longest_word()
     '''
-    testcases = [
+    test_cases = [
         {
             'file_name': 'testdata/manifesto.txt',
             'expected': 'incompetencies',
@@ -89,7 +89,7 @@ def test_find_longest_word():
             'expected': 'different',
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch5.find_longest_word(case['file_name'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -98,13 +98,13 @@ def test_find_all_longest_words():
     '''
     test ch5.test_find_all_longest_words()
     '''
-    testcases = [
+    test_cases = [
         {
             'path': 'testdata/',
             'expected': {'time_machine_chapter1.txt': 'representations', 'manifesto.txt': 'incompetencies', 'passwd': 'console', 'wcfile.txt': 'different', 'small_passwd': 'sample'},
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = ch5.find_all_longest_words(case['path'])
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -113,7 +113,7 @@ def test_passwd_to_tsv():
     '''
     test ch5.passwd_to_tsv
     '''
-    testcases = [
+    test_cases = [
         {
             'in': 'testdata/small_passwd',
             'out': '/tmp/small_passwd.tsv',
@@ -125,7 +125,7 @@ def test_passwd_to_tsv():
             'checksum': '48c26a6adc2e6e8306c79bba47b258565f7b6594507608f8fe6db24ceef75db4',
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         ch5.passwd_to_tsv(case['in'], case['out'])
         with open(case['out'], 'rb') as ofile:
             byts = ofile.read()
@@ -138,7 +138,7 @@ def test_summarize_scores():
     '''
     test ch5.summarize_scores
     '''
-    testcases = [
+    test_cases = [
         {
             'input': 'testdata/scores',
             'expected': [
@@ -153,7 +153,7 @@ def test_summarize_scores():
             ],
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         output = []
 
         ch5.print = lambda s: output.append(s)

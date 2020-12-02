@@ -138,7 +138,7 @@ def test_format_sort_records():
     '''
     test ch3.format_sort_records()
     '''
-    testcases = [
+    test_cases = [
         {
             'input': [
                 ('Joe', 'Shmoe', 7.85),
@@ -157,7 +157,7 @@ def test_format_sort_records():
         },
     ]
 
-    for case in testcases:
+    for case in test_cases:
         output = []
 
         ch3.print = lambda s: output.append(s)

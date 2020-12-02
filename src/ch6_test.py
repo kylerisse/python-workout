@@ -11,7 +11,7 @@ def test_myxml():
     '''
     test ch6.myxml()
     '''
-    testcases = [
+    test_cases = [
         {
             'func': ch6.myxml('foo'),
             'expected': '<foo></foo>',
@@ -25,7 +25,7 @@ def test_myxml():
             'expected': '<foo a="1" b="2" c="3">bar</foo>'
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         got = case['func']
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -34,7 +34,7 @@ def test_calc():
     '''
     test ch6.calc()
     '''
-    testcases = [
+    test_cases = [
         {
             'func': ch6.calc('+ 5 5'),
             'expected': 10,
@@ -68,7 +68,7 @@ def test_calc():
             'expected': False,
         },
     ]    
-    for case in testcases:
+    for case in test_cases:
         got = case['func']
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
@@ -77,7 +77,7 @@ def test_create_password_generator():
     '''
     test ch6.create_password_generator
     '''
-    testcases = [
+    test_cases = [
         {
             'generator': ch6.create_password_generator('abcdefghijklmnopqrstuvwxyz0123456789', rngseed=1),
             'tests': [
@@ -118,7 +118,7 @@ def test_create_password_generator():
             ],
         },
     ]
-    for case in testcases:
+    for case in test_cases:
         gen = case['generator']
         for test in case['tests']:
             got = gen(test['length'])
