@@ -218,8 +218,49 @@ def test_gematria_for():
             'input': 'python',
             'expected': 98,
         },
+        {
+            'input': 'PyTHoN',
+            'expected': 98,
+        },
+        {
+            'input': 'ab%&42ab',
+            'expected': 6,
+        },
     ]
     
     for case in testcases:
         got = ch7.gematria_for(case['input'])
+        assert got == case['expected'], f'{got} != {case["expected"]}'
+
+
+def test_gematria_equal_words():
+    '''
+    test ch7.gematria_equal_words
+    '''
+    dict_file = 'testdata/dict/words_small.txt'
+    testcases = [
+        {
+            'input': 'test',
+            'expected': ['Abderite', 'abecedary'],
+        },
+        {
+            'input': 'a',
+            'expected': ['A', 'a'],
+        },
+        {
+            'input': '',
+            'expected': [],
+        },
+        {
+            'input': 'whamalama',
+            'expected': ['abdicator'],
+        },
+        {
+            'input': 'Pytho',
+            'expected': ['abcoulomb', 'abductor'],
+        }
+    ]
+
+    for case in testcases:
+        got = ch7.gematria_equal_words(case['input'], dict_file=dict_file)
         assert got == case['expected'], f'{got} != {case["expected"]}'

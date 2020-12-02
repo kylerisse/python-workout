@@ -47,7 +47,7 @@ def pig_latin_file(path):
     convert contents of file to pig latin
     '''
     return ' '.join(ch2.pig_latin(word)
-                for line in open(path, 'r')
+            for line in open(path, 'r')
                 for word in line.split())
 
 
@@ -56,7 +56,7 @@ def flip_dict(dic):
     flip keys and values in dict
     '''
     return {val: key
-                for key, val in dic.items()}
+            for key, val in dic.items()}
 
 
 def transform_values(func, dic):
@@ -64,7 +64,7 @@ def transform_values(func, dic):
     transform values of dict using func
     '''
     return {key: func(val)
-                for key, val in dic.items()}
+            for key, val in dic.items()}
 
 
 def get_sv(path):
@@ -73,12 +73,12 @@ def get_sv(path):
     file that contain all 5 vowels (a, e, i , o, u)
     '''
     return {word.strip()
-                for word in open(path, 'r')
-                if 'a' in word.lower() and
-                    'e' in word.lower() and
-                    'i' in word.lower() and
-                    'o' in word.lower() and
-                    'u' in word.lower()}
+            for word in open(path, 'r')
+            if 'a' in word.lower() and
+                'e' in word.lower() and
+                'i' in word.lower() and
+                'o' in word.lower() and
+                'u' in word.lower()}
 
 
 def gematria():
@@ -87,12 +87,22 @@ def gematria():
     "gematria" values
     '''
     return {chr(val): val - 96
-                for val in range(97, 123)}
+            for val in range(97, 123)}
 
 
 def gematria_for(word):
     '''
     returns gematria score for a word
     '''
-    return sum(gematria()[letter]
-                    for letter in word)
+    return sum(gematria().get(letter.lower(), 0)
+            for letter in word)
+
+
+def gematria_equal_words(word, dict_file='testdata/dict/words.txt'):
+    '''
+    return all gematria equal words from dictionary file
+    '''
+    val = gematria_for(word)
+    return [dict_word.strip()
+            for dict_word in open(dict_file, 'r')
+            if gematria_for(dict_word) == val]
