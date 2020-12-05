@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # pylint: disable=all
 '''
-Chapter 8 Tests
+Chapter 8 Menu Tests
 '''
 
 import menu

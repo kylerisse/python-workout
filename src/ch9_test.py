@@ -12,8 +12,10 @@ def test_create_scoops():
     test ch9.create_scoops()
     '''
     expected = '[Scoop(chocolate), Scoop(vanilla), Scoop(rocky road)]'
-    got = str(ch9.create_scoops())
-    assert got == expected, f'{got} != {expected}'
+    got = ch9.create_scoops()
+    assert str(got) == expected, f'{got} != {expected}'
+    for i, flavor in enumerate(['chocolate', 'vanilla', 'rocky road']):
+        assert got[i].flavor == flavor, f'{got[i].flavor} != {flavor}'
 
 
 def test_Bowl_add_scoops_basic():
@@ -27,8 +29,10 @@ def test_Bowl_add_scoops_basic():
     b = ch9.Bowl()
     b.add_scoops(s1, s2)
     b.add_scoops(s3)
-    got = str(b)
-    assert got == expected, f'{got} != {expected}'
+    got = b
+    assert str(got) == expected, f'{got} != {expected}'
+    for i, flavor in enumerate(['vanilla', 'chocolate', 'avacado']):
+        assert got.scoops[i].flavor == flavor, f'{got.scoops[i].flavor} != {flavor}'
 
 
 def test_Bowl_add_scoops_max():
@@ -45,8 +49,11 @@ def test_Bowl_add_scoops_max():
     b.add_scoops(s1, s2)
     b.add_scoops(s3, s4)
     b.add_scoops(s5)
-    got = str(b)
-    assert got == expected, f'{got} != {expected}'
+    got = b
+    assert str(got) == expected, f'{got} != {expected}'
+    assert len(got.scoops) == 3, f'len should be 3'
+    for i, flavor in enumerate(['rocky road', 'cookies and cream', 'vanilla']):
+        assert got.scoops[i].flavor == flavor, f'{fot.scoops[i].flavor} != {flavor}'
 
 
 def test_BigBowl_add_scoops_max():
@@ -64,8 +71,17 @@ def test_BigBowl_add_scoops_max():
     b.add_scoops(s1, s2)
     b.add_scoops(s3, s4)
     b.add_scoops(s5, s6)
-    got = str(b)
-    assert got == expected, f'{got} != {expected}'
+    got = b
+    assert str(got) == expected, f'{got} != {expected}'
+    assert len(got.scoops) == 5, f'len should be 5'
+    for i, flavor in enumerate([
+        'cookies and cream',
+        'rocky road',
+        'cookie dough',
+        'chocolate',
+        'vanilla',
+    ]):
+        assert got.scoops[i].flavor == flavor, f'{got[i].scoops.flavor} != {flavor}'
 
 
 def test_FlexibleDict():

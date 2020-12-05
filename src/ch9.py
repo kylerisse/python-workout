@@ -1,5 +1,5 @@
 '''
-Chapter 9
+Chapter 9: Objects
 '''
 
 
@@ -58,7 +58,8 @@ class BigBowl(Bowl):
 
 class FlexibleDict(dict):
     '''
-    Flexible dict with keys that ignore type
+    Flexible dict with keys that seemlessly transition
+    between int and string
     '''
     def __getitem__(self, key):
         if key in self:

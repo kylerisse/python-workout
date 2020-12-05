@@ -1,5 +1,5 @@
 '''
-Chapter 3
+Chapter 3: Lists and tuples
 '''
 
 from operator import itemgetter

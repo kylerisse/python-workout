@@ -1,5 +1,5 @@
 '''
-Menu
+Chapter 8 (Modules and packages): Menu
 '''
 
 

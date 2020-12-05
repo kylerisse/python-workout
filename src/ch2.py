@@ -1,5 +1,5 @@
 '''
-Chapter 2
+Chapter 2: Strings
 '''
 
 vowels = ['a', 'e', 'i', 'o', 'u']

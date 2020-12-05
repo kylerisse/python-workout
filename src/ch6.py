@@ -1,5 +1,5 @@
 '''
-Chapter 6
+Chapter 6: Functions
 '''
 
 from datetime import datetime

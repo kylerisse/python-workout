@@ -2,6 +2,8 @@
 
 Exercises for Python Workout by Reuven M Lerner. (https://www.goodreads.com/book/show/48505808-python-workout)
 
+We used this book in our Q4 2020 study group. My personal goal was to learn the material as well as new techniques for unit testing. To that end, I aimed to complete all base exercise requirements with 100% test coverage and Circle CI integration.
+
 ## Requirements
 
 * Docker

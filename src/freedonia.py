@@ -1,5 +1,5 @@
 '''
-Freedonia
+Chapter 8 (Modules and packages): Freedonia
 '''
 
 PROVINCES = {

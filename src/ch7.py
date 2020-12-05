@@ -1,5 +1,5 @@
 '''
-Chapter 7
+Chapter 7: Functional programming with comprehensions
 '''
 
 import ch2
