@@ -123,7 +123,7 @@ class Zoo():
 
     def animals_by_legs(self, legs):
         '''
-        get all zoo animals of a specific color
+        get all zoo animals with specific number of legs
         '''
         return [animal
                 for cage in self.cages.values()
