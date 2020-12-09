@@ -64,13 +64,13 @@ def test_Circle_class():
         assert got == case['expected'], f'{got} != {case["expected"]}'
 
 
-#def test_dir_file_lines():
-#    '''
-#    test ch10.dir_file_lines()
-#    '''
-#    expected = '7d81639a316d592170a292bf189d25164118dba96938f797982dd6c353ca2a0f'
-#    gotstr = ''.join(line
-#                        for line in ch10.dir_file_lines('testdata/'))
-#    gotbyt = bytes(gotstr, 'utf-8')
-#    got = hashlib.sha256(gotbyt).hexdigest()
-#    assert got == expected
+def test_dir_file_lines():
+    '''
+    test ch10.dir_file_lines()
+    '''
+    expected = 'f2af1680c9b0a527a5448f873da33ff980db686680dd10ff4e0beac672738db3'
+    gotstr = ''.join(line
+                        for line in sorted(ch10.dir_file_lines('testdata/')))
+    gotbyt = bytes(gotstr, 'utf-8')
+    got = hashlib.sha256(gotbyt).hexdigest()
+    assert got == expected
