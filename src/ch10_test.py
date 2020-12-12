@@ -5,6 +5,7 @@ Chapter 10 Tests
 '''
 
 import hashlib
+import time
 
 import ch10
 
@@ -74,3 +75,59 @@ def test_dir_file_lines():
     gotbyt = bytes(gotstr, 'utf-8')
     got = hashlib.sha256(gotbyt).hexdigest()
     assert got == expected
+
+
+def test_elapsed_since():
+    '''
+    test ch10.elapsed_since()
+    '''
+    test_cases = [
+        {
+            'input': 'abcd',
+            'expected': ['a', 'b', 'c', 'd'],
+            'sleep': 0.0001,
+        },
+        {
+            'input': [1, 2, 3, 4, 5],
+            'expected': [1, 2, 3, 4, 5],
+            'sleep': 0.04,
+        },
+        {
+            'input': 'yz',
+            'expected': ['y', 'z'],
+            'sleep': 1,
+        },
+    ]
+    for case in test_cases:
+        for i, tup in enumerate(ch10.elapsed_since(case['input'])):
+            time.sleep(case['sleep'])
+            if i == 0:
+                assert tup[0] == 0, f'{tup[0]} should be 0'
+            else:
+                assert tup[0] > case['sleep'], f'{tup[0]} should be greater than {case["sleep"]}'
+            assert tup[1] == case['expected'][i], f'{tup[1]} should be {case["expected"]}'
+
+
+def test_mychain():
+    '''
+    test ch10.mychain()
+    '''
+    test_cases = [
+        {
+            'func': ch10.mychain('abc', [1, 2, 3], {'a': 1, 'b': 2}),
+            'expected': ['a', 'b', 'c', 1, 2, 3, 'a', 'b'],
+        },
+        {
+            'func': ch10.mychain(('b', None), [8, 4], 'test', (1, 2, 3), {'test': 1, 'test_again': 2}),
+            'expected': ['b', None, 8, 4, 't', 'e', 's', 't', 1, 2, 3, 'test', 'test_again'],
+        },
+        {
+            'func': ch10.mychain(range(0, 3)),
+            'expected': [0, 1, 2],
+        },
+    ]
+    for case in test_cases:
+        got = []
+        for i in case['func']:
+            got.append(i),
+        assert got == case['expected'], f'{got} != {case["expected"]}'

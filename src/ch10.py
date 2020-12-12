@@ -5,6 +5,7 @@ Chapter 10: Iterators and generators
 
 from os import listdir
 from os.path import join
+from time import perf_counter
 
 
 class MyEnumerateIterator():
@@ -80,3 +81,25 @@ def dir_file_lines(path):
                 yield line
         except OSError:
             pass
+
+
+def elapsed_since(itervals):
+    '''
+    elapsed_since is a generator which returns elapsed
+    time since previous item and current item
+    '''
+    for key, val in enumerate(itervals):
+        this_count = perf_counter()
+        if key == 0:
+            last_count = this_count
+        yield (this_count - last_count, val)
+        last_count = this_count
+
+
+def mychain(*args):
+    '''
+    simple implementation of itertools.chain
+    '''
+    for items in args:
+        for item in items:
+            yield item
